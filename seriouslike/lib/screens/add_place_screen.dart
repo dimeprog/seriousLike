@@ -28,6 +28,13 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
     Navigator.of(context).pop();
   }
 
+  // ignore: prefer_function_declarations_over_variables
+//   final  Function() _saveSelectedImage= (){
+// if (_titleController.text.isEmpty || _pickedImage == null) return;
+//     Provider.of<GreatPlace>(context, listen: false)
+//         .addPlace(_pickedImage!, _titleController.text);
+//     Navigator.of(context).pop();
+//  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(

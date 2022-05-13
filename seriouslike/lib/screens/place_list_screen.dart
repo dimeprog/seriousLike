@@ -33,9 +33,18 @@ class PlaceListScreen extends StatelessWidget {
                     child: ListView.builder(
                       itemBuilder: (ctx, i) => ListTile(
                         leading: CircleAvatar(
-                          backgroundImage: FileImage(PlaceData.items[i].image!),
+                          backgroundImage: FileImage(
+                            PlaceData.items[i].image!,
+                          ),
                         ),
-                        title: Text(PlaceData.items[i].title!),
+                        title: Text(
+                          PlaceData.items[i].title!,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'RobotoCondensed',
+                            fontSize: 20,
+                          ),
+                        ),
                       ),
                       itemCount: PlaceData.items.length,
                     ),

@@ -3,6 +3,7 @@
 import 'package:flutter/foundation.dart';
 import '../models/place.dart';
 import 'dart:io';
+import '../helper/db_helper.dart';
 
 class GreatPlace with ChangeNotifier {
   List<Place> _items = [];
@@ -19,5 +20,10 @@ class GreatPlace with ChangeNotifier {
       location: null,
     );
     _items.add(newPlace);
+    notifyListeners();
+    DbHelper.insert(table, data)
+
   }
+  
+  
 }
