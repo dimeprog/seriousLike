@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-// import 'package:theme/theme.dart';
+import './screens/add_place_screen.dart';
+
 import '../providers/great_place.dart';
 import '../screens/place_list_screen.dart';
 
@@ -27,12 +28,15 @@ class MyApp extends StatelessWidget {
           errorColor: const Color(0xFFCC4D4D),
           appBarTheme: AppBarTheme(
             textTheme: ThemeData.light().textTheme.apply(
-                  fontFamily: 'Raleway',
-                  bodyColor: const Color(0xFFF8BBD0),
-                ),
+                fontFamily: 'Raleway',
+                bodyColor: const Color(0xFFF8BBD0),
+                decorationStyle: TextDecorationStyle.solid),
           ),
         ),
         home: PlaceListScreen(),
+        routes: {
+          AddPlaceScreen.routeName: (context) => AddPlaceScreen(),
+        },
       ),
     );
   }
