@@ -25,7 +25,7 @@ class GreatPlace with ChangeNotifier {
     DbHelper.insert('user_place', {
       'id': newPlace.id,
       'title': newPlace.title,
-      'image': newPlace.image,
+      'image': newPlace.image!.path,
     });
   }
 
