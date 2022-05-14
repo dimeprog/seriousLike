@@ -21,36 +21,44 @@ class PlaceListScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: Consumer<GreatPlace>(
-        child: const Center(
-          child: Text('no place aded yet'),
-        ),
-        builder: ((context, PlaceData, ch) => PlaceData.items.length <= 0
-            ? ch!
-            : Column(
-                children: [
-                  Expanded(
-                    child: ListView.builder(
-                      itemBuilder: (ctx, i) => ListTile(
-                        leading: CircleAvatar(
-                          backgroundImage: FileImage(
-                            PlaceData.items[i].image!,
-                          ),
-                        ),
-                        title: Text(
-                          PlaceData.items[i].title!,
-                          style: const TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontFamily: 'RobotoCondensed',
-                            fontSize: 20,
-                          ),
-                        ),
-                      ),
-                      itemCount: PlaceData.items.length,
+      body: FutureBuilder(
+        future:
+            Provider.of<GreatPlace>(context, listen: false).fetchAndSetData(),
+        builder: (context, dataSnapShot) =>
+            dataSnapShot.connectionState == ConnectionState.waiting
+                ? const CircularProgressIndicator()
+                : Consumer<GreatPlace>(
+                    child: const Center(
+                      child: Text('no place aded yet'),
                     ),
-                  )
-                ],
-              )),
+                    builder: ((context, PlaceData, ch) =>
+                        PlaceData.items.length <= 0
+                            ? ch!
+                            : Column(
+                                children: [
+                                  Expanded(
+                                    child: ListView.builder(
+                                      itemBuilder: (ctx, i) => ListTile(
+                                        leading: CircleAvatar(
+                                          backgroundImage: FileImage(
+                                            PlaceData.items[i].image!,
+                                          ),
+                                        ),
+                                        title: Text(
+                                          PlaceData.items[i].title!,
+                                          style: const TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontFamily: 'RobotoCondensed',
+                                            fontSize: 20,
+                                          ),
+                                        ),
+                                      ),
+                                      itemCount: PlaceData.items.length,
+                                    ),
+                                  )
+                                ],
+                              )),
+                  ),
       ),
     );
   }
