@@ -42,59 +42,57 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
       appBar: AppBar(
         title: const Text('Add Place'),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(
-                  top: 10,
-                  left: 10,
-                  right: 10,
-                ),
-                child: Column(children: [
-                  TextField(
-                    controller: _titleController,
-                    decoration: const InputDecoration(
-                      label: Text(
-                        'Title',
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                        ),
+      body: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(
+                top: 10,
+                left: 10,
+                right: 10,
+              ),
+              child: Column(children: [
+                TextField(
+                  controller: _titleController,
+                  decoration: const InputDecoration(
+                    label: Text(
+                      'Title',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w500,
                       ),
                     ),
                   ),
-                  const SizedBox(
-                    height: 25,
-                  ),
-                  ImageInput(_selectedImage),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  LocationWigdet(),
-                ]),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              RaisedButton.icon(
-                icon: const Icon(Icons.add),
-                color: const Color(0xFFF3CB51),
-                textColor: Color.fromARGB(255, 230, 4, 79),
-                onPressed: _saveSelectedImage,
-                elevation: 0,
-                materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                label: const Text(
-                  'Add place',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
                 ),
-              )
-            ]),
-      ),
+                const SizedBox(
+                  height: 25,
+                ),
+                ImageInput(_selectedImage),
+                const SizedBox(
+                  height: 15,
+                ),
+                LocationWigdet(),
+              ]),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            RaisedButton.icon(
+              icon: const Icon(Icons.add),
+              color: const Color(0xFFF3CB51),
+              textColor: Color.fromARGB(255, 230, 4, 79),
+              onPressed: _saveSelectedImage,
+              elevation: 0,
+              materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+              label: const Text(
+                'Add place',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            )
+          ]),
     );
   }
 }
