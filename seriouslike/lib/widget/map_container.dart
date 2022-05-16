@@ -11,14 +11,18 @@ class _MapContainerState extends State<MapContainer> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 300,
+      width: double.infinity,
       child: GoogleMap(
         mapType: MapType.hybrid,
-        initialCameraPosition:
-            CameraPosition(target: LatLng(7.0, 4.5), zoom: 11.6),
+        initialCameraPosition: const CameraPosition(
+          target: LatLng(7.0, 4.5),
+          zoom: 11,
+        ),
         zoomControlsEnabled: false,
         myLocationButtonEnabled: false,
         onTap: (_) {
-          Navigator.of(context).popAndPushNamed(MapScreen.routeName);
+          Navigator.of(context).pushNamed(MapScreen.routeName);
         },
       ),
     );

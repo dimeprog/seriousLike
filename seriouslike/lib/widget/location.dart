@@ -3,6 +3,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 import '../helper/location_helper.dart';
 import '../screens/map_screen.dart';
+import '../widget/map_container.dart';
 
 class LocationWigdet extends StatefulWidget {
   @override
@@ -25,7 +26,7 @@ class _LocationWigdetState extends State<LocationWigdet> {
   }
 
   Future<void> _isOnMap() async {
-    final LatLng selectedLocation = await Navigator.of(context).push(
+    final selectedLocation = await Navigator.of(context).push(
       MaterialPageRoute(
         fullscreenDialog: true,
         builder: (ctx) => MapScreen(isOnMapSelect: true),
@@ -39,23 +40,24 @@ class _LocationWigdetState extends State<LocationWigdet> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
-          alignment: Alignment.center,
-          width: double.infinity,
-          height: 200,
-          decoration: BoxDecoration(
-              border: Border.all(
-            width: 1,
-            color: Colors.grey,
-          )),
-          child: _previewUrlImage == null
-              ? const Text('no preview yet')
-              : Image.network(
-                  _previewUrlImage!,
-                  fit: BoxFit.cover,
-                  width: double.infinity,
-                ),
-        ),
+        MapContainer(),
+        // Container(
+        //   alignment: Alignment.center,
+        //   width: double.infinity,
+        //   height: 200,
+        //   decoration: BoxDecoration(
+        //       border: Border.all(
+        //     width: 1,
+        //     color: Colors.grey,
+        //   )),
+        //   child: _previewUrlImage == null
+        //       ? const Text('no preview yet')
+        //       : Image.network(
+        //           _previewUrlImage!,
+        //           fit: BoxFit.cover,
+        //           width: double.infinity,
+        //         ),
+        // ),
         const SizedBox(
           height: 10,
         ),
