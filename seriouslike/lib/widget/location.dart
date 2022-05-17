@@ -6,6 +6,9 @@ import '../screens/map_screen.dart';
 import '../widget/map_container.dart';
 
 class LocationWigdet extends StatefulWidget {
+  final Function _selectedPlace;
+
+  LocationWigdet(this._selectedPlace);
   @override
   State<LocationWigdet> createState() => _LocationWigdetState();
 }
@@ -32,8 +35,11 @@ class _LocationWigdetState extends State<LocationWigdet> {
         builder: (ctx) => MapScreen(isOnMapSelect: true),
       ),
     );
-    if (selectedLocation == null) return;
-    print(selectedLocation);
+    if (selectedLocation == null) {
+      return;
+    }
+    widget._selectedPlace(
+        selectedLocation.latitude, selectedLocation.longitude);
   }
 
   @override
