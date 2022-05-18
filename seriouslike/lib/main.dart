@@ -1,9 +1,12 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:seriouslike/screens/map_screen.dart';
 import './screens/add_place_screen.dart';
 
 import '../providers/great_place.dart';
 import '../screens/place_list_screen.dart';
+import 'dart:io';
 
 void main() {
   runApp(MyApp());
@@ -37,6 +40,7 @@ class MyApp extends StatelessWidget {
         home: PlaceListScreen(),
         routes: {
           AddPlaceScreen.routeName: (context) => AddPlaceScreen(),
+          MapScreen.routeName: (context) => MapScreen(),
         },
       ),
     );
