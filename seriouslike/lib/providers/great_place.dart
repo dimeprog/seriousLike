@@ -19,11 +19,14 @@ class GreatPlace with ChangeNotifier {
   Future<void> addPlace(File pickedImage, String imageTitle,
       PlaceLocation _selectedLocation) async {
     final address = await LocationHelper.generateGeoCodingAddress(
-        _selectedLocation.lat, _selectedLocation.long);
+      _selectedLocation.lat,
+      _selectedLocation.long,
+    );
     final _updatedLocation = PlaceLocation(
-        lat: _selectedLocation.lat,
-        long: _selectedLocation.long,
-        address: address);
+      lat: _selectedLocation.lat,
+      long: _selectedLocation.long,
+      address: address.toString(),
+    );
     final newPlace = Place(
       id: DateTime.now().toString(),
       image: pickedImage,

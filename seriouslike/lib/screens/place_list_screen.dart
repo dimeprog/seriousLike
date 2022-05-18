@@ -52,6 +52,14 @@ class PlaceListScreen extends StatelessWidget {
                                             fontSize: 20,
                                           ),
                                         ),
+                                        subtitle: Text(
+                                          PlaceData.items[i].location!.address,
+                                          style: const TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontFamily: 'Raleway',
+                                            fontSize: 20,
+                                          ),
+                                        ),
                                       ),
                                       itemCount: PlaceData.items.length,
                                     ),

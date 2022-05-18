@@ -1,10 +1,9 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:seriouslike/models/place.dart';
 import 'package:seriouslike/widget/image_input.dart';
 import 'package:provider/provider.dart';
-import '../widget/location.dart';
+import '../widget/locationWidget.dart';
 import '../providers/great_place.dart';
 import '../models/place.dart';
 
@@ -20,6 +19,14 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
   final _titleController = TextEditingController();
   File? _pickedImage;
   PlaceLocation? _pickedLocation;
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+
+    _titleController.dispose();
+    super.dispose();
+  }
 
   // /////////////////////////
   void _selectedImage(File? SnapImage) {
@@ -43,6 +50,8 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final mapData = Provider.of<GreatPlace>(context).fetchAndSetData();
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Add Place'),
@@ -77,7 +86,9 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
                   const SizedBox(
                     height: 15,
                   ),
-                  LocationWigdet(_selectPlace),
+                  LocationWigdet(
+                    _selectPlace,
+                  ),
                 ]),
               ),
               const SizedBox(
@@ -86,7 +97,7 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
               RaisedButton.icon(
                 icon: const Icon(Icons.add),
                 color: const Color(0xFFF3CB51),
-                textColor: Color.fromARGB(255, 230, 4, 79),
+                textColor: const Color.fromARGB(255, 230, 4, 79),
                 onPressed: _saveSelectedImage,
                 elevation: 0,
                 materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
